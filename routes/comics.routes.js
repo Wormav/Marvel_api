@@ -13,7 +13,7 @@ comicsRouter.get("/comics", (req, res) => {
   getComics(req, res);
 });
 
-comicsRouter.get("/hero", (req, res) => {
+comicsRouter.get("/heros", (req, res) => {
   getHero(req, res);
 });
 
@@ -21,7 +21,7 @@ comicsRouter.get("/comics/:characterId", (req, res) => {
   getHeroComics(req, res);
 });
 
-comicsRouter.get("/one/hero/:id", (req, res) => {
+comicsRouter.get("/one/heros/:id", (req, res) => {
   getHeroById(req, res);
 });
 
