@@ -58,7 +58,7 @@ const getComicsById = async (req, res) => {
 const getHeroById = async (req, res) => {
   try {
     const response = await axios.get(
-      `/characters/${req.params.id}?apiKey=${process.env.API_KEY}`
+      `/character/${req.params.id}?apiKey=${process.env.API_KEY}`
     );
     const hero = response.data;
 
@@ -75,7 +75,7 @@ const getHeroComics = async (req, res) => {
   const skip = req.query.skip || 0;
   try {
     const response = await axios.get(
-      `/comics/${req.params.characterId}?apiKey=${process.env.API_KEY}&limit=${limit}&skip=${skip}`
+      `/comic/${req.params.characterId}?apiKey=${process.env.API_KEY}&limit=${limit}&skip=${skip}`
     );
     const comicsOfHero = response.data;
 
