@@ -4,6 +4,7 @@ const {
   login,
   updateHeroToFavories,
   updateComicToFavories,
+  getUserWithToken,
 } = require("../controller/user.controllers");
 const isAuthenticated = require("../middlewares/isAuthenticated.middleware");
 
@@ -15,6 +16,10 @@ userRouter.post("/signup", (req, res) => {
 
 userRouter.post("/login", (req, res) => {
   login(req, res);
+});
+
+userRouter.get("/", isAuthenticated, (req, res) => {
+  getUserWithToken(req, res);
 });
 
 userRouter.put("/update/heros/:id", isAuthenticated, (req, res) => {

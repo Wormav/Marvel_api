@@ -70,6 +70,15 @@ const login = async (req, res) => {
   }
 };
 
+const getUserWithToken = async (req, res) => {
+  try {
+    const user = req.user;
+    return res.status(200).json({ user });
+  } catch (err) {
+    return res.status(500).json({ message: "Une erreur est survenue", err });
+  }
+};
+
 const updateHeroToFavories = async (req, res) => {
   try {
     const { id } = req.params;
@@ -146,4 +155,10 @@ const updateComicToFavories = async (req, res) => {
   }
 };
 
-module.exports = { signup, login, updateComicToFavories, updateHeroToFavories };
+module.exports = {
+  signup,
+  login,
+  updateComicToFavories,
+  updateHeroToFavories,
+  getUserWithToken,
+};
