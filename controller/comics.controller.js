@@ -40,6 +40,36 @@ const getHero = async (req, res) => {
   }
 };
 
+const getComicsById = async (req, res) => {
+  try {
+    const response = await axios.get(
+      `/comics/${req.params.id}?apiKey=${process.env.API_KEY}`
+    );
+    const comics = response.data;
+
+    res.status(200).json(comics);
+  } catch (err) {
+    return res
+      .status(500)
+      .json({ message: "Une erreur est survenue", err: err });
+  }
+};
+
+const getHeroById = async (req, res) => {
+  try {
+    const response = await axios.get(
+      `/characters/${req.params.id}?apiKey=${process.env.API_KEY}`
+    );
+    const hero = response.data;
+
+    res.status(200).json(hero);
+  } catch (err) {
+    return res
+      .status(500)
+      .json({ message: "Une erreur est survenue", err: err });
+  }
+};
+
 const getHeroComics = async (req, res) => {
   const limit = req.query.limit || 100;
   const skip = req.query.skip || 0;
@@ -57,4 +87,10 @@ const getHeroComics = async (req, res) => {
   }
 };
 
-module.exports = { getComics, getHero, getHeroComics };
+module.exports = {
+  getComics,
+  getHero,
+  getHeroComics,
+  getComicsById,
+  getHeroById,
+};
